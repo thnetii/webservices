@@ -30,10 +30,10 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav ml-md-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Page1</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Page1">Page1</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Page2</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Page2">Page2</a>
                         </li>
                     </ul>
                 </div>
@@ -48,7 +48,7 @@
     </div>
 
     <footer class="border-top footer pl-3 text-muted">
-        &copy; Year - THNETII.WebServices.Claims.Sample - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; @(DateTime.Now.Year) - THNETII.WebServices.Claims.Sample - <a asp-area="" asp-page="/Privacy">Privacy</a>
     </footer>
 
     <environment include="Development">
