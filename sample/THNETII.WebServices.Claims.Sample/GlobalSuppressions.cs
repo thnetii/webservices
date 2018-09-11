@@ -8,4 +8,3 @@ using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable")]
 [assembly: SuppressMessage("Performance", "CA1822: Mark members as static")]
-
