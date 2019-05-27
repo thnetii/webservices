@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <IsPackable>false</IsPackable>
     <RootNamespace>THNETII.WebServices</RootNamespace>
   </PropertyGroup>
@@ -15,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Separator to support automatic dependabot merge PR -->
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.5" />
-    <!-- Separator to support automatic dependabot merge PR -->
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.2.5" />
   </ItemGroup>
 
