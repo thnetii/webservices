@@ -18,7 +18,7 @@
     <!-- Separator to support automatic dependabot merge PR -->
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.4" />
     <!-- Separator to support automatic dependabot merge PR -->
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.2.5" />
   </ItemGroup>
 
 </Project>
