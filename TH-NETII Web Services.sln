@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.182
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76ECDD75-FC40-411A-A6CA-0D5914D48029}"
 	ProjectSection(SolutionItems) = preProject
@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.Claims.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.Claims", "src\THNETII.WebServices.Claims\THNETII.WebServices.Claims.csproj", "{97ACE591-CF72-46AC-B750-B63CDD8299F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.WebServices.EtoFormsRemoteAuthenticationUI", "src\THNETII.WebServices.EtoFormsRemoteAuthenticationUI\THNETII.WebServices.EtoFormsRemoteAuthenticationUI.csproj", "{DF73A3B5-BB6C-4785-8610-24669B626CF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.EtoFormsRemoteAuthenticationUI", "src\THNETII.WebServices.EtoFormsRemoteAuthenticationUI\THNETII.WebServices.EtoFormsRemoteAuthenticationUI.csproj", "{DF73A3B5-BB6C-4785-8610-24669B626CF8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.Authentication.OAuthSignOut", "src\THNETII.WebServices.Authentication.OAuthSignOut\THNETII.WebServices.Authentication.OAuthSignOut.csproj", "{F1BD016F-A3FE-400E-AA8A-320EB6048416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,18 @@ Global
 		{DF73A3B5-BB6C-4785-8610-24669B626CF8}.Release|x64.Build.0 = Release|Any CPU
 		{DF73A3B5-BB6C-4785-8610-24669B626CF8}.Release|x86.ActiveCfg = Release|Any CPU
 		{DF73A3B5-BB6C-4785-8610-24669B626CF8}.Release|x86.Build.0 = Release|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Debug|x64.Build.0 = Debug|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Debug|x86.Build.0 = Debug|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Release|x64.ActiveCfg = Release|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Release|x64.Build.0 = Release|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Release|x86.ActiveCfg = Release|Any CPU
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +108,7 @@ Global
 		{D87C6568-49B2-4945-B9BB-7A48369F9CDA} = {A0F8C8C9-7DB8-449E-B0A7-C2C026D693D1}
 		{97ACE591-CF72-46AC-B750-B63CDD8299F0} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
 		{DF73A3B5-BB6C-4785-8610-24669B626CF8} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
+		{F1BD016F-A3FE-400E-AA8A-320EB6048416} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D4C454C-A5EF-40DC-8E49-9141F411BC91}
