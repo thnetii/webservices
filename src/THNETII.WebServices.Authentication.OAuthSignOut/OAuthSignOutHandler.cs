@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -55,7 +56,7 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
                 return;
             }
 
-            var oauthOptionType = GetOAuthOptionsType(remoteHandler?.GetType());
+            var oauthOptionType = OAuthOptionsHelper.GetOAuthOptionsType(remoteHandler?.GetType());
             if (oauthOptionType is null)
             {
                 throw new InvalidOperationException($"Handler of type {oauthScheme.HandlerType} does not implement {typeof(OAuthHandler<>)}. Options type deriving from {typeof(OAuthOptions)} could not be determined.");
@@ -88,12 +89,24 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
 
                         await Events.RevokeToken(revokeContext);
 
-                        await RevokeTokenAsync(oauthHandler, token);
+                        try
+                        {
+                            await RevokeTokenAsync(oauthHandler, token);
+                        }
+#pragma warning disable CA1031 // Do not catch general exception types
+                        catch (Exception revokeExcept)
+                        {
+                            Logger.TokenRevokeFailure(token.Name, oauthHandler.Scheme.Name, revokeExcept);
+                        }
+#pragma warning restore CA1031 // Do not catch general exception types
                         break;
                 }
             }
 
             Logger.SignedOut(oauthHandler.Scheme.Name);
+
+            if (!string.IsNullOrEmpty(properties.RedirectUri))
+                Context.Response.Redirect(properties.RedirectUri);
         }
 
         [SuppressMessage("Reliability", "CA2007: Do not directly await a Task")]
@@ -114,33 +127,14 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
             {
                 Content = requestContent
             })
-            using (var response = await oauthHandler.Options.Backchannel.SendAsync(requestMessage, Context.RequestAborted))
+            using (var response = await oauthHandler.Options.Backchannel.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, Context.RequestAborted))
             {
-                if (response.IsSuccessStatusCode)
-                    Logger.TokenRevoked(token.Name, oauthHandler.Scheme.Name);
-                else
-                    Logger.TokenRevokeFailure(token.Name, oauthHandler.Scheme.Name, response);
+                response.EnsureSuccessStatusCode();
             }
         }
 
         protected virtual string GetRevokeEndpoint(OAuthOptions oAuthOptions) =>
             Options.RevokeEndpoint ?? Options.RevokeEndpointFallback?.Invoke(oAuthOptions);
-
-        private static Type GetOAuthOptionsType(Type handlerType)
-        {
-            var oauthHandlerType = WalkTypeHierarchy(handlerType)
-                .FirstOrDefault(t => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(OAuthHandler<>));
-            if (oauthHandlerType is null)
-                return null;
-
-            return oauthHandlerType.GetGenericArguments()[0];
-        }
-
-        private static IEnumerable<Type> WalkTypeHierarchy(Type type)
-        {
-            for (var t = type; type is Type; t = t.BaseType)
-                yield return t;
-        }
 
         private delegate Task HandleSignOutFunc(
             OAuthSignOutHandler<TOptions> signOutHandler,
@@ -192,6 +186,18 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
 
         public virtual Func<OAuthOptions, string> RevokeEndpointFallback { get; set; } =
             OAuthSignOutDefaults.RevokeEndpointFallback;
+
+        public override void Validate()
+        {
+            base.Validate();
+
+            if (string.IsNullOrEmpty(RemoteAuthenticationScheme))
+            {
+#pragma warning disable CA2208 // Instantiate argument exceptions correctly
+                throw new ArgumentException($"The '{nameof(RemoteAuthenticationScheme)}' option must be provided.", nameof(RemoteAuthenticationScheme));
+#pragma warning restore CA2208 // Instantiate argument exceptions correctly
+            }
+        }
     }
 
     public static class OAuthSignOutDefaults
@@ -208,10 +214,13 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
 
         public static readonly string AuthenticationSchemeSuffix = "-SignOut";
 
-        public static readonly string DisplayName = OAuthDefaults.DisplayName;
+        public static readonly string DisplayNameSuffix = " (Sign-Out)";
 
         public static string AuthenticationScheme(string oauthScheme) =>
             oauthScheme + AuthenticationSchemeSuffix;
+
+        public static string DisplayName(string oauthDisplayName) =>
+            oauthDisplayName + DisplayNameSuffix;
     }
 
     internal static class OAuthSignOutLoggerExtensions
@@ -221,10 +230,10 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
                 LogLevel.Information, new EventId(21, "OAuthTokenRevoked"),
                 "OAuthToken '{TokenName}' was revoked for authentication scheme '{OAuthScheme}'");
 
-        private static readonly Action<ILogger, string, string, int, string, Exception> tokenRevokeFailure =
-            LoggerMessage.Define<string, string, int, string>(
+        private static readonly Action<ILogger, string, string, Exception> tokenRevokeFailure =
+            LoggerMessage.Define<string, string>(
                 LogLevel.Warning, new EventId(22, "OAuthTokenRevokeFailure"),
-                "OAuthToken '{TokenName}' revocation for authentication scheme '{OAuthScheme}' failed. {StatusCode} {ReasonPhrase}");
+                "OAuthToken '{TokenName}' revocation for authentication scheme '{OAuthScheme}' failed.");
 
         private static readonly Action<ILogger, string, Exception> signedOut =
             LoggerMessage.Define<string>(
@@ -234,8 +243,8 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
         public static void TokenRevoked(this ILogger logger, string tokenName, string oauthScheme) =>
             tokenRevoked(logger, tokenName, oauthScheme, null);
 
-        public static void TokenRevokeFailure(this ILogger logger, string tokenName, string oauthScheme, HttpResponseMessage response) =>
-            tokenRevokeFailure(logger, tokenName, oauthScheme, (int)response.StatusCode, response.ReasonPhrase, null);
+        public static void TokenRevokeFailure(this ILogger logger, string tokenName, string oauthScheme, Exception exception) =>
+            tokenRevokeFailure(logger, tokenName, oauthScheme, exception);
 
         public static void SignedOut(this ILogger logger, string oauthScheme) =>
             signedOut(logger, oauthScheme, null);
@@ -288,5 +297,43 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
         }
 
         public IAuthenticationRequestHandler OAuthHandler { get; set; }
+    }
+
+    public static class OAuthSignOutExtensions
+    {
+        public static AuthenticationBuilder AddOAuthSignOut(this AuthenticationBuilder builder, string authenticationScheme, Action<OAuthSignOutOptions> configureOptions)
+            => builder.AddOAuthSignOut<OAuthSignOutOptions, OAuthSignOutHandler<OAuthSignOutOptions>>(authenticationScheme, configureOptions);
+
+        public static AuthenticationBuilder AddOAuthSignOut(this AuthenticationBuilder builder, string authenticationScheme, string displayName, Action<OAuthSignOutOptions> configureOptions)
+            => builder.AddOAuthSignOut<OAuthSignOutOptions, OAuthSignOutHandler<OAuthSignOutOptions>>(authenticationScheme, displayName, configureOptions);
+
+        public static AuthenticationBuilder AddOAuthSignOut<TOptions, THandler>(this AuthenticationBuilder builder, string authenticationScheme, Action<TOptions> configureOptions)
+            where TOptions : OAuthSignOutOptions, new()
+            where THandler : OAuthSignOutHandler<TOptions>
+            => builder.AddOAuthSignOut<TOptions, THandler>(authenticationScheme, OAuthSignOutDefaults.DisplayName(OAuthDefaults.DisplayName), configureOptions);
+
+        public static AuthenticationBuilder AddOAuthSignOut<TOptions, THandler>(this AuthenticationBuilder builder, string authenticationScheme, string displayName, Action<TOptions> configureOptions)
+            where TOptions : OAuthSignOutOptions, new()
+            where THandler : OAuthSignOutHandler<TOptions>
+            => builder.AddScheme<TOptions, THandler>(authenticationScheme, displayName, configureOptions);
+    }
+
+    internal static class OAuthOptionsHelper
+    {
+        public static Type GetOAuthOptionsType(Type handlerType)
+        {
+            var oauthHandlerType = WalkTypeHierarchy(handlerType)
+                .FirstOrDefault(t => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(OAuthHandler<>));
+            if (oauthHandlerType is null)
+                return null;
+
+            return oauthHandlerType.GetGenericArguments()[0];
+        }
+
+        private static IEnumerable<Type> WalkTypeHierarchy(Type type)
+        {
+            for (var t = type; type is Type; t = t.BaseType)
+                yield return t;
+        }
     }
 }
