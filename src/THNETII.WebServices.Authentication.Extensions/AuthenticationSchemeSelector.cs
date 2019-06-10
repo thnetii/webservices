@@ -57,21 +57,26 @@ namespace THNETII.WebServices.Authentication
 #pragma warning restore CA1062 // Validate arguments of public methods
         }
 
-        private static string ResolveTarget(string initialScheme, AuthenticationSchemeOptions options, HttpContext httpContext)
+        public static string ResolveTarget(string forwardScheme, AuthenticationSchemeOptions options, HttpContext httpContext)
         {
-            var resolvedScheme = initialScheme;
-            if (!string.IsNullOrEmpty(resolvedScheme))
-                return resolvedScheme;
-
-            resolvedScheme = options?.ForwardDefaultSelector?.Invoke(httpContext);
-            if (!string.IsNullOrEmpty(resolvedScheme))
-                return resolvedScheme;
-
-            resolvedScheme = options?.ForwardDefault;
-            if (!string.IsNullOrEmpty(resolvedScheme))
+            if (TryNotNullOrEmpty(forwardScheme, out string resolvedScheme) ||
+                TryNotNullOrEmpty(options?.ForwardDefaultSelector?.Invoke(httpContext), out resolvedScheme) ||
+                TryNotNullOrEmpty(options?.ForwardDefault, out resolvedScheme))
                 return resolvedScheme;
 
             return null;
+
+            bool TryNotNullOrEmpty(string s, out string notNull)
+            {
+                if (string.IsNullOrEmpty(s))
+                {
+                    notNull = null;
+                    return false;
+                }
+
+                notNull = s;
+                return true;
+            }
         }
     }
 }
