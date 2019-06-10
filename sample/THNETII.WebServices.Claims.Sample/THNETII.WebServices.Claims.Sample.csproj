@@ -3,6 +3,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <UserSecretsId>aspnet-THNETII.WebServices.Claims.Sample-94A98A65-984E-4241-B5E0-B1D7D5633EA3</UserSecretsId>
   </PropertyGroup>
 

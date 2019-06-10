@@ -10,6 +10,7 @@ namespace THNETII.WebServices.Authentication.CookiesSignOut
 {
     public static class CookiesSignOutExtensions
     {
+        [SuppressMessage("Design", "CA1062: Validate arguments of public methods", Justification = "Extension Method")]
         public static AuthenticationBuilder AddCookieRemoteAuthSignOut(this AuthenticationBuilder builder)
         {
             builder.Services.PostConfigure<CookieAuthenticationOptions>(options =>

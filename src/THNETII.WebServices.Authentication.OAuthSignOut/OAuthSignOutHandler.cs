@@ -77,6 +77,8 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
 
             await Events.SigningOut(signoutContext);
 
+            string oauthSchemeName = oauthHandler?.Scheme.Name;
+
             foreach (var token in properties.GetTokens())
             {
                 switch (token.Name)
@@ -88,7 +90,6 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
                             oauthHandler);
 
                         await Events.RevokeToken(revokeContext);
-
                         try
                         {
                             await RevokeTokenAsync(oauthHandler, token);
@@ -96,17 +97,18 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
 #pragma warning disable CA1031 // Do not catch general exception types
                         catch (Exception revokeExcept)
                         {
-                            Logger.TokenRevokeFailure(token.Name, oauthHandler.Scheme.Name, revokeExcept);
+                            Logger.TokenRevokeFailure(token.Name, oauthSchemeName, revokeExcept);
                         }
 #pragma warning restore CA1031 // Do not catch general exception types
                         break;
                 }
             }
 
-            Logger.SignedOut(oauthHandler.Scheme.Name);
+            Logger.SignedOut(oauthSchemeName);
 
-            if (!string.IsNullOrEmpty(properties.RedirectUri))
-                Context.Response.Redirect(properties.RedirectUri);
+            string redirectUri = properties?.RedirectUri;
+            if (!string.IsNullOrEmpty(redirectUri))
+                Context.Response.Redirect(redirectUri);
         }
 
         [SuppressMessage("Reliability", "CA2007: Do not directly await a Task")]
@@ -114,20 +116,24 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
             OAuthHandler<TOAuthOptions> oauthHandler, AuthenticationToken token)
             where TOAuthOptions : OAuthOptions, new()
         {
-            var revokeEndpoint = GetRevokeEndpoint(oauthHandler.Options);
+            var options = oauthHandler?.Options;
+            var revokeEndpoint = GetRevokeEndpoint(options);
             if (revokeEndpoint is null)
                 return;
-            var requestContent = new FormUrlEncodedContent(new Dictionary<string, string>
-            {
-                ["token"] = token.Value,
-                ["token_type_hint"] = token.Name
-            });
+            var tokenDict = token is null
+                ? Enumerable.Empty<KeyValuePair<string, string>>()
+                : new Dictionary<string, string>
+                {
+                    ["token"] = token.Value,
+                    ["token_type_hint"] = token.Name
+                };
+            var requestContent = new FormUrlEncodedContent(tokenDict);
             using (requestContent)
             using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, revokeEndpoint)
             {
                 Content = requestContent
             })
-            using (var response = await oauthHandler.Options.Backchannel.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, Context.RequestAborted))
+            using (var response = await options.Backchannel.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, Context.RequestAborted))
             {
                 response.EnsureSuccessStatusCode();
             }
@@ -194,7 +200,9 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
             if (string.IsNullOrEmpty(RemoteAuthenticationScheme))
             {
 #pragma warning disable CA2208 // Instantiate argument exceptions correctly
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 throw new ArgumentException($"The '{nameof(RemoteAuthenticationScheme)}' option must be provided.", nameof(RemoteAuthenticationScheme));
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
 #pragma warning restore CA2208 // Instantiate argument exceptions correctly
             }
         }
@@ -204,6 +212,9 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
     {
         public static string RevokeEndpointFallback(OAuthOptions options)
         {
+            if (options is null)
+                return null;
+
             try
             {
                 var authorizeUri = new Uri(options.AuthorizationEndpoint);
@@ -312,6 +323,7 @@ namespace THNETII.WebServices.Authentication.OAuthSignOut
             where THandler : OAuthSignOutHandler<TOptions>
             => builder.AddOAuthSignOut<TOptions, THandler>(authenticationScheme, OAuthSignOutDefaults.DisplayName(OAuthDefaults.DisplayName), configureOptions);
 
+        [SuppressMessage("Design", "CA1062: Validate arguments of public methods", Justification = "Extension Method", MessageId = "builder")]
         public static AuthenticationBuilder AddOAuthSignOut<TOptions, THandler>(this AuthenticationBuilder builder, string authenticationScheme, string displayName, Action<TOptions> configureOptions)
             where TOptions : OAuthSignOutOptions, new()
             where THandler : OAuthSignOutHandler<TOptions>
