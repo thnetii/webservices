@@ -9,4 +9,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\THNETII.WebServices.Authentication.Extensions\THNETII.WebServices.Authentication.Extensions.csproj" />
+  </ItemGroup>
+
 </Project>
