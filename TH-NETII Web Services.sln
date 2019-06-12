@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.Authent
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.Authentication.GoogleSignOut", "src\THNETII.WebServices.Authentication.GoogleSignOut\THNETII.WebServices.Authentication.GoogleSignOut.csproj", "{4005CF70-C84A-4A93-85F3-8E208428AFC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.WebServices.Authentication.CookiesSignOut", "src\THNETII.WebServices.Authentication.CookiesSignOut\THNETII.WebServices.Authentication.CookiesSignOut.csproj", "{9B76F2D0-1F03-4715-9825-F1C6111EB41B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.Authentication.Extensions", "src\THNETII.WebServices.Authentication.Extensions\THNETII.WebServices.Authentication.Extensions.csproj", "{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.WebServices.Authentication.Extensions", "src\THNETII.WebServices.Authentication.Extensions\THNETII.WebServices.Authentication.Extensions.csproj", "{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.WebServices.Authentication.CookiesExtensions", "src\THNETII.WebServices.Authentication.CookiesExtensions\THNETII.WebServices.Authentication.CookiesExtensions.csproj", "{48F26952-CB86-4782-8AC3-488CD8E9FC8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,18 +103,6 @@ Global
 		{4005CF70-C84A-4A93-85F3-8E208428AFC8}.Release|x64.Build.0 = Release|Any CPU
 		{4005CF70-C84A-4A93-85F3-8E208428AFC8}.Release|x86.ActiveCfg = Release|Any CPU
 		{4005CF70-C84A-4A93-85F3-8E208428AFC8}.Release|x86.Build.0 = Release|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Debug|x64.Build.0 = Debug|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Debug|x86.Build.0 = Debug|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Release|x64.ActiveCfg = Release|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Release|x64.Build.0 = Release|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Release|x86.ActiveCfg = Release|Any CPU
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B}.Release|x86.Build.0 = Release|Any CPU
 		{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -127,6 +115,18 @@ Global
 		{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD}.Release|x64.Build.0 = Release|Any CPU
 		{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD}.Release|x86.ActiveCfg = Release|Any CPU
 		{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD}.Release|x86.Build.0 = Release|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Debug|x64.Build.0 = Debug|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Debug|x86.Build.0 = Debug|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Release|x64.ActiveCfg = Release|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Release|x64.Build.0 = Release|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Release|x86.ActiveCfg = Release|Any CPU
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,8 +137,8 @@ Global
 		{97ACE591-CF72-46AC-B750-B63CDD8299F0} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
 		{F1BD016F-A3FE-400E-AA8A-320EB6048416} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
 		{4005CF70-C84A-4A93-85F3-8E208428AFC8} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
-		{9B76F2D0-1F03-4715-9825-F1C6111EB41B} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
 		{216D7291-1D9A-4E6A-8018-3FBBF10EF4BD} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
+		{48F26952-CB86-4782-8AC3-488CD8E9FC8E} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D4C454C-A5EF-40DC-8E49-9141F411BC91}

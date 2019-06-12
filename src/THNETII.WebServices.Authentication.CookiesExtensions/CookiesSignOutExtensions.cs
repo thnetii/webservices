@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace THNETII.WebServices.Authentication.CookiesSignOut
+namespace THNETII.WebServices.Authentication
 {
     public static class CookiesSignOutExtensions
     {
