@@ -19,10 +19,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.2.5" />
+    <PackageReference Include="XUnit.SkippableFact" Version="1.3.12" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\THNETII.WebServices.Authentication.Extensions\THNETII.WebServices.Authentication.Extensions.csproj" />
+    <ProjectReference Include="..\..\src\THNETII.WebServices.RegistryContentTypeProvider\THNETII.WebServices.RegistryContentTypeProvider.csproj" />
   </ItemGroup>
 
 </Project>

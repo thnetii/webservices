@@ -1,10 +1,13 @@
 using System.Diagnostics.CodeAnalysis;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using THNETII.WebServices.Authorization.PolicyExtensions;
 
 namespace THNETII.WebServices.WebDav.Sample
 {
@@ -28,6 +31,9 @@ namespace THNETII.WebServices.WebDav.Sample
                 options.CheckConsentNeeded = context => true;
             });
 
+            services.AddAuthorization(o => o.DefaultPolicy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build());
 
             services.AddRazorPages()
                 .AddNewtonsoftJson();
@@ -49,13 +55,17 @@ namespace THNETII.WebServices.WebDav.Sample
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthorizationPolicy();
 
             app.UseEndpoints(endpoints =>
             {
