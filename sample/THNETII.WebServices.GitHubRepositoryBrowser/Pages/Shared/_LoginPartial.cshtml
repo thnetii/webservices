@@ -1,0 +1,17 @@
+﻿@if (Context.User?.Identity.IsAuthenticated ?? false)
+{
+    <ul class="navbar-nav navbar-right">
+        <li class="nav-item">
+            <span class="nav-link">@Context.User.Identity.Name</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="~/logout" title="Logout">Logout</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav navbar-right">
+        <li class="nav-item"><a class="nav-link" href="~/login">Login</a></li>
+    </ul>
+}

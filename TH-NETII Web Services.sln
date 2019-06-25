@@ -43,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.Windows
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.WindowsIdentityImpersonation.Sample", "sample\THNETII.WebServices.WindowsIdentityImpersonation.Sample\THNETII.WebServices.WindowsIdentityImpersonation.Sample.csproj", "{59578E64-7138-4EDC-8892-D22CF7D5E87B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.WebServices.FileProviders.GitHub", "src\THNETII.WebServices.FileProviders.GitHub\THNETII.WebServices.FileProviders.GitHub.csproj", "{A90EF8AC-5FCE-44A8-8488-2EB8CDB3780A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.FileProviders.GitHub", "src\THNETII.WebServices.FileProviders.GitHub\THNETII.WebServices.FileProviders.GitHub.csproj", "{A90EF8AC-5FCE-44A8-8488-2EB8CDB3780A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.GitHubRepositoryBrowser", "sample\THNETII.WebServices.GitHubRepositoryBrowser\THNETII.WebServices.GitHubRepositoryBrowser.csproj", "{D68A817A-EA2D-4309-A150-EDD236FA6C90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -211,6 +213,18 @@ Global
 		{A90EF8AC-5FCE-44A8-8488-2EB8CDB3780A}.Release|x64.Build.0 = Release|Any CPU
 		{A90EF8AC-5FCE-44A8-8488-2EB8CDB3780A}.Release|x86.ActiveCfg = Release|Any CPU
 		{A90EF8AC-5FCE-44A8-8488-2EB8CDB3780A}.Release|x86.Build.0 = Release|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Debug|x64.Build.0 = Debug|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Debug|x86.Build.0 = Debug|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Release|x64.ActiveCfg = Release|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Release|x64.Build.0 = Release|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Release|x86.ActiveCfg = Release|Any CPU
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -229,6 +243,7 @@ Global
 		{8980BAB5-B873-49C1-BA12-B58766810B66} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
 		{59578E64-7138-4EDC-8892-D22CF7D5E87B} = {A0F8C8C9-7DB8-449E-B0A7-C2C026D693D1}
 		{A90EF8AC-5FCE-44A8-8488-2EB8CDB3780A} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
+		{D68A817A-EA2D-4309-A150-EDD236FA6C90} = {A0F8C8C9-7DB8-449E-B0A7-C2C026D693D1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D4C454C-A5EF-40DC-8E49-9141F411BC91}

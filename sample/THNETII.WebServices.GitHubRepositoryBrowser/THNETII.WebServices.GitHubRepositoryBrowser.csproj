@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <UserSecretsId>1547b780-af8c-4ee7-99ef-ee3ddbe6876d</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="AspNet.Security.OAuth.GitHub" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.48" PrivateAssets="All" />
+    <PackageReference Include="Octokit" Version="0.32.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\THNETII.WebServices.FileProviders.GitHub\THNETII.WebServices.FileProviders.GitHub.csproj" />
+  </ItemGroup>
+  
+</Project>
