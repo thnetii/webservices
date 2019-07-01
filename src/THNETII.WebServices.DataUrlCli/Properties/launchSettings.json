@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "THNETII.WebServices.DataUrlCli": {
+      "commandName": "Project",
+      "commandLineArgs": "--mime text/plain -c utf-8 ..\\..\\..\\LICENSE"
+    }
+  }
+}
