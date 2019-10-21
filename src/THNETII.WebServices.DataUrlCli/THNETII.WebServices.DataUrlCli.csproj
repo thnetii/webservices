@@ -7,8 +7,8 @@
 
     <Description>Converts a file into an RFC 2397 compliant data URL.</Description>
     <PackageDescription>Command-line tool to convert a file into an RFC 2397 compliant data URL.</PackageDescription>
-    
-    <PackAsTool>true</PackAsTool>
+
+    <PackAsTool Condition="'$(RuntimeIdentifier)'==''">true</PackAsTool>
     <ToolCommandName>data-url</ToolCommandName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
