@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Localization
+@using System.Globalization
+@model IEnumerable<IRequestCultureProvider>
+
+@{
+    bool hasProviders = false;
+}
+
+<ul class="list-group">
+    @foreach (var (cultureProvider, idx) in Model.Select((i, p) => (i, p)))
+    {
+        if (cultureProvider is null)
+            continue;
+        hasProviders = true;
+
+    <li class="list-group-item">
+        <div class="d-flex w-100 justify-content-between align-items-center">
+            <h5 class="mb-2" title="@cultureProvider.GetType().FullName">@cultureProvider.GetType().Name</h5>
+            <span class="badge badge-secondary badge-pill">@idx.ToString(CultureInfo.InvariantCulture)</span>
+        </div>
+        @switch (cultureProvider)
+        {
+            case AcceptLanguageHeaderRequestCultureProvider headerProvider:
+                await Html.RenderPartialAsync("RequestCultureProvider/ListGroupItem.Content.AcceptLanguageHeader", headerProvider);
+                break;
+            case CookieRequestCultureProvider cookieProvider:
+                await Html.RenderPartialAsync("RequestCultureProvider/ListGroupItem.Content.Cookie", cookieProvider);
+                break;
+            case QueryStringRequestCultureProvider queryProvider:
+                await Html.RenderPartialAsync("RequestCultureProvider/ListGroupItem.Content.QueryString", queryProvider);
+                break;
+        }
+        <small>@cultureProvider.GetType().FullName</small>
+    </li>
+    }
+
+    @if (!hasProviders)
+    {
+        <li class="list-group-item-info">
+            No request culture providers available.
+        </li>
+    }
+</ul>

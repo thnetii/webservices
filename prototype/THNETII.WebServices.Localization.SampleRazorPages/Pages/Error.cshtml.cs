@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace THNETII.WebServices.Localization.SampleRazorPages.Pages
 {
@@ -16,6 +14,7 @@ namespace THNETII.WebServices.Localization.SampleRazorPages.Pages
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
+        [SuppressMessage("Code Quality", "IDE0052: Remove unread private members")]
         private readonly ILogger<ErrorModel> _logger;
 
         public ErrorModel(ILogger<ErrorModel> logger)
