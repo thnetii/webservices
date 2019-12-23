@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Diagnostics.CodeAnalysis;
 
 namespace THNETII.WebServices.SampleRazorPages.MaterialDesignComponents
 {
@@ -20,13 +16,16 @@ namespace THNETII.WebServices.SampleRazorPages.MaterialDesignComponents
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
+        [SuppressMessage("Performance", "CA1822: Mark members as static")]
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [SuppressMessage("Performance", "CA1822: Mark members as static")]
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

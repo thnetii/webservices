@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace THNETII.WebServices.SampleRazorPages.MaterialDesignComponents.Pages
 {
     public class IndexModel : PageModel
     {
+        [SuppressMessage("Code Quality", "IDE0052: Remove unread private members")]
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -17,6 +15,7 @@ namespace THNETII.WebServices.SampleRazorPages.MaterialDesignComponents.Pages
             _logger = logger;
         }
 
+        [SuppressMessage("Performance", "CA1822: Mark members as static")]
         public void OnGet()
         {
 
