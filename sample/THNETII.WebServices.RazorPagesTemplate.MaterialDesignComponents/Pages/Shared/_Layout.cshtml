@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - THNETII.WebServices.SampleRazorPages.MaterialDesignComponents</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/material-components-web/material-components-web.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css"
+              integrity="sha256-qXMsxdCTC8GWuxtVDeJoKEm3lyAzHEkv+4l8nfsVvuw=" crossorigin="anonymous"
+              asp-fallback-href="~/lib/material-components-web/material-components-web.min.css"
+              asp-fallback-test-class="mdc-touch-target-wrapper" asp-fallback-test-property="display" asp-fallback-test-value="inline" />
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="mdc-typography">
+    @RenderBody()
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - THNETII.WebServices.RazorPagesTemplate.Bootstrap - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/material-components-web/material-components-web.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.js"
+                integrity="sha256-50zE5E7A9cvQj1Gn3yUZDKAQProHvRxbJzLfa1knWIc=" crossorigin="anonymous"
+                asp-fallback-src="~/lib/material-components-web/material-components-web.min.js"
+                asp-fallback-test="window.mdc"></script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
