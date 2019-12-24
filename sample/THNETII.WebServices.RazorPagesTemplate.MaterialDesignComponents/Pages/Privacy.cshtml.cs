@@ -3,14 +3,14 @@ using Microsoft.Extensions.Logging;
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace THNETII.WebServices.SampleRazorPages.MaterialDesignComponents.Pages
+namespace THNETII.WebServices.RazorPagesTemplate.MaterialDesignComponents.Pages
 {
-    public class IndexModel : PageModel
+    public class PrivacyModel : PageModel
     {
         [SuppressMessage("Code Quality", "IDE0052: Remove unread private members")]
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<PrivacyModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public PrivacyModel(ILogger<PrivacyModel> logger)
         {
             _logger = logger;
         }
@@ -18,7 +18,6 @@ namespace THNETII.WebServices.SampleRazorPages.MaterialDesignComponents.Pages
         [SuppressMessage("Performance", "CA1822: Mark members as static")]
         public void OnGet()
         {
-
         }
     }
 }

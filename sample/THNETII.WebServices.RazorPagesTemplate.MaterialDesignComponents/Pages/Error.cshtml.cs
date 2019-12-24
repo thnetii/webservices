@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace THNETII.WebServices.SampleRazorPages.MaterialDesignComponents.Pages
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+
+namespace THNETII.WebServices.RazorPagesTemplate.MaterialDesignComponents.Pages
 {
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : PageModel

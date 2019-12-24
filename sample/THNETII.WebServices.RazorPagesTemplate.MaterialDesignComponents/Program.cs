@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace THNETII.WebServices.SampleRazorPages.MaterialDesignComponents
+namespace THNETII.WebServices.RazorPagesTemplate.MaterialDesignComponents
 {
     public static class Program
     {
