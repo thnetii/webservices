@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\THNETII.WebServices.AspNetCore.TagHelpers\THNETII.WebServices.AspNetCore.TagHelpers.csproj" />
+  </ItemGroup>
+
 </Project>
