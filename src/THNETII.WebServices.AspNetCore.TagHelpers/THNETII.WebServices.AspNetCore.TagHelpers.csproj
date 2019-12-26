@@ -3,12 +3,25 @@
 
   <PropertyGroup>
     <LangVersion>8</LangVersion>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp2.0;netcoreapp2.1;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks Condition="'$(NoNetFramework)'!='true'">$(TargetFrameworks);net461</TargetFrameworks>
   </PropertyGroup>
 
-  <ItemGroup>
+  <PropertyGroup>
+    <TargetFramework Condition="'$(BuildDefaultTargetFramework)'!=''">netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'!='netstandard3.0' and '$(TargetFramework)'!='netstandard3.1'">
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netcoreapp'))">
+    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard3.0' or '$(TargetFramework)'=='netstandard3.1'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>
