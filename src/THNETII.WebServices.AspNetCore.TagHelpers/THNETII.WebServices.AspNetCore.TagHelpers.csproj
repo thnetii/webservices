@@ -16,11 +16,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
   </ItemGroup>
 
-  <!--
+  
   <ItemGroup Condition="$(TargetFramework.StartsWith('netcoreapp'))">
     <PackageReference Remove="Microsoft.SourceLink.GitHub" />
   </ItemGroup>
-  -->
+  
 
   <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp3.0' or '$(TargetFramework)'=='netcoreapp3.1'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
