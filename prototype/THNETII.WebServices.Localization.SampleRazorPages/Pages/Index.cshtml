@@ -1,0 +1,27 @@
+﻿@page
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@inject IOptions<RequestLocalizationOptions> RequestLocalizationOptions
+
+<div class="card">
+    <div class="card-header">
+        Request Culture Providers
+    </div>
+    <div class="card-body">
+        @if (RequestLocalizationOptions?.Value?.RequestCultureProviders is IEnumerable<IRequestCultureProvider> cultureProviders)
+        {
+            await Html.RenderPartialAsync("RequestCultureProvider/ListGroup", cultureProviders);
+        }
+        else
+        {
+            <p class="card-text">
+                There are no request culture providers registered for this application.
+            </p>
+        }
+    </div>
+</div>
