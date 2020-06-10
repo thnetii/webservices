@@ -9,13 +9,19 @@ using System.Threading.Tasks;
 
 namespace THNETII.WebServices.Authentication.Memory
 {
-    public class RemoteAuthenticationMemorySignInHandler
-        : SignInAuthenticationHandler<AuthenticationSchemeOptions>
+    public class MemoryAuthenticationHandler
+        : SignInAuthenticationHandler<MemoryAuthenticationOptions>
     {
-        public RemoteAuthenticationMemorySignInHandler(
-            IOptionsMonitor<AuthenticationSchemeOptions> options,
+        private readonly MemoryAuthenticationTicketStore ticketStore;
+
+        public MemoryAuthenticationHandler(
+            MemoryAuthenticationTicketStore ticketStore,
+            IOptionsMonitor<MemoryAuthenticationOptions> options,
             ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
-            : base(options, logger, encoder, clock) { }
+            : base(options, logger, encoder, clock)
+        {
+            this.ticketStore = ticketStore;
+        }
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
@@ -26,8 +32,9 @@ namespace THNETII.WebServices.Authentication.Memory
 
         protected override Task HandleSignInAsync(ClaimsPrincipal user, AuthenticationProperties properties)
         {
-            
-
+            var ticket = new AuthenticationTicket(user, properties, Scheme.Name);
+            var context = new MemoryAuthenticationSignInContext(user,
+                Context, Scheme, Options, properties);
             throw new NotImplementedException();
         }
 
