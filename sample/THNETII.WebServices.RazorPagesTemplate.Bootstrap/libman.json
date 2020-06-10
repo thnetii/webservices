@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "library": "jquery-validate@1.19.1",
+      "destination": "wwwroot/lib/jquery-validate/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "popper.js@1.16.0",
+      "destination": "wwwroot/lib/popper.js/"
+    },
+    {
+      "library": "twitter-bootstrap@4.4.1",
+      "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "library": "material-design-icons@3.0.1",
+      "destination": "wwwroot/lib/material-design-icons/",
+      "files": [
+        "iconfont/material-icons.css",
+        "iconfont/material-icons.min.css",
+        "iconfont/material-icons.min.css.map",
+        "iconfont/MaterialIcons-Regular.eot",
+        "iconfont/MaterialIcons-Regular.svg",
+        "iconfont/MaterialIcons-Regular.ttf",
+        "iconfont/MaterialIcons-Regular.woff",
+        "iconfont/MaterialIcons-Regular.woff2"
+      ]
+    }
+  ]
+}
