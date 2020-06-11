@@ -4,6 +4,7 @@ using System.Buffers.Text;
 using System.CommandLine;
 using System.CommandLine.Builder;
 using System.CommandLine.Invocation;
+using System.CommandLine.Parsing;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -134,9 +135,9 @@ namespace THNETII.WebServices.DataUrlCli
                         Memory<byte> bytePreviousRemainder = Memory<byte>.Empty;
                         Memory<byte> byteCurrentRemainder = byteRentedArray;
 
-                        for (int bytesRead = await fileStream.ReadAsync(byteCurrentRemainder, cancelToken);
+                        for (int bytesRead = await fileStream.ReadAsync(byteCurrentRemainder, cancelToken).ConfigureAwait(false);
                             bytesRead != 0;
-                            bytesRead = await fileStream.ReadAsync(byteCurrentRemainder, cancelToken))
+                            bytesRead = await fileStream.ReadAsync(byteCurrentRemainder, cancelToken).ConfigureAwait(false))
                         {
                             var byteAvailable = new Memory<byte>(byteRentedArray, 0, bytePreviousRemainder.Length + bytesRead);
                             var byteCount = (byteAvailable.Length / 3) * 3;
