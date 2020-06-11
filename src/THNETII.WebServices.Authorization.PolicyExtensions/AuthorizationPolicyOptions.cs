@@ -1,4 +1,4 @@
-﻿namespace THNETII.WebServices.Authorization.PolicyExtensions
+namespace THNETII.WebServices.Authorization.PolicyExtensions
 {
     public class AuthorizationPolicyOptions
     {
