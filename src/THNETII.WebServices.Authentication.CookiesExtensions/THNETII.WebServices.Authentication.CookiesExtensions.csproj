@@ -1,17 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>THNETII.WebServices.Authentication</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="
+              ('$(TargetFrameworkIdentifier)' == '.NETCoreApp'  AND '$(_TargetFrameworkVersionWithoutV)' &lt; '3.0') OR
+              ('$(TargetFrameworkIdentifier)' != '.NETCoreApp')
+              ">
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="
+              ('$(TargetFrameworkIdentifier)' == '.NETCoreApp'  AND '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0')
+              ">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\THNETII.WebServices.Authentication.Extensions\THNETII.WebServices.Authentication.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp'">
+    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
   </ItemGroup>
 
 </Project>

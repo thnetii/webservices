@@ -1,13 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>THNETII.WebServices.Authentication</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="
+              ('$(TargetFrameworkIdentifier)' == '.NETCoreApp'  AND '$(_TargetFrameworkVersionWithoutV)' &lt; '3.0') OR
+              ('$(TargetFrameworkIdentifier)' != '.NETCoreApp')
+              ">
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="
+              ('$(TargetFrameworkIdentifier)' == '.NETCoreApp'  AND '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0')
+              ">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp'">
+    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
   </ItemGroup>
 
 </Project>

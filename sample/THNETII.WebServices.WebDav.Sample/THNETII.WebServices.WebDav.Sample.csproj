@@ -2,15 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.76" PrivateAssets="All" />
   </ItemGroup>
-
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\THNETII.WebServices.Authorization.PolicyExtensions\THNETII.WebServices.Authorization.PolicyExtensions.csproj" />
