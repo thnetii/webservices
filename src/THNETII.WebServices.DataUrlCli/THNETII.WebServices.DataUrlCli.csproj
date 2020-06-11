@@ -3,7 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
-
+    <TargetFramework Condition="'$(BuildDefaultTargetFramework)'!=''">netcoreapp3.1</TargetFramework>
+    
     <Description>Converts a file into an RFC 2397 compliant data URL.</Description>
     <PackageDescription>Command-line tool to convert a file into an RFC 2397 compliant data URL.</PackageDescription>
 
