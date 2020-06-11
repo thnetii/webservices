@@ -1,20 +1,23 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <LangVersion>7.3</LangVersion>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-
+    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <TargetFramework Condition="'$(BuildDefaultTargetFramework)'!=''">netcoreapp3.1</TargetFramework>
+    
     <Description>Converts a file into an RFC 2397 compliant data URL.</Description>
     <PackageDescription>Command-line tool to convert a file into an RFC 2397 compliant data URL.</PackageDescription>
 
     <PackAsTool Condition="'$(RuntimeIdentifier)'==''">true</PackAsTool>
     <ToolCommandName>data-url</ToolCommandName>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.CommandLine.Experimental" Version="0.3.0-alpha.19317.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp'">
+    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
   </ItemGroup>
 
 </Project>

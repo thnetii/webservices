@@ -11,18 +11,21 @@
     <TargetFramework Condition="'$(BuildDefaultTargetFramework)'!=''">netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'!='netcoreapp3.0' and '$(TargetFramework)'!='netcoreapp3.1'">
+  <ItemGroup Condition="
+              ('$(TargetFrameworkIdentifier)' == '.NETCoreApp'  AND '$(_TargetFrameworkVersionWithoutV)' &lt; '3.0') OR
+              ('$(TargetFrameworkIdentifier)' != '.NETCoreApp')
+              ">
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
   </ItemGroup>
-
   
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netcoreapp'))">
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp'">
     <PackageReference Remove="Microsoft.SourceLink.GitHub" />
   </ItemGroup>
-  
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp3.0' or '$(TargetFramework)'=='netcoreapp3.1'">
+  <ItemGroup Condition="
+              ('$(TargetFrameworkIdentifier)' == '.NETCoreApp'  AND '$(_TargetFrameworkVersionWithoutV)' &gt;= '3.0')
+              ">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 

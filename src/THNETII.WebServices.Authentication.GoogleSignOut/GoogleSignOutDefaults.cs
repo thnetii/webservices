@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication.Google;
 
 using THNETII.WebServices.Authentication.OAuthSignOut;
 

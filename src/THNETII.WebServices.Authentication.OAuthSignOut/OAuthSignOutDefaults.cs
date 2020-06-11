@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.AspNetCore.Authentication.OAuth;
 
 namespace THNETII.WebServices.Authentication.OAuthSignOut

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Extensions.Logging;
 
 namespace THNETII.WebServices.Authentication.OAuthSignOut
