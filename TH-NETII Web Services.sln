@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28917.182
@@ -44,7 +43,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.DataUrl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.RazorPagesTemplate.Bootstrap", "sample\THNETII.WebServices.RazorPagesTemplate.Bootstrap\THNETII.WebServices.RazorPagesTemplate.Bootstrap.csproj", "{E526939D-89BC-45D9-81F9-D79057ACEDE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.WebServices.AspNetCore.TagHelpers", "src\THNETII.WebServices.AspNetCore.TagHelpers\THNETII.WebServices.AspNetCore.TagHelpers.csproj", "{73E1E8C1-7A32-4D06-966C-140CAF6D46EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "THNETII.WebServices.AspNetCore.TagHelpers", "src\THNETII.WebServices.AspNetCore.TagHelpers\THNETII.WebServices.AspNetCore.TagHelpers.csproj", "{73E1E8C1-7A32-4D06-966C-140CAF6D46EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{8786006C-0227-4A70-AA0D-9872EA8D62F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "THNETII.WebServices.Template.WebApp", "template\THNETII.WebServices.Template.WebApp\THNETII.WebServices.Template.WebApp.csproj", "{504A9893-11CC-45C6-9D86-2EE14BD70EFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,6 +203,18 @@ Global
 		{73E1E8C1-7A32-4D06-966C-140CAF6D46EB}.Release|x64.Build.0 = Release|Any CPU
 		{73E1E8C1-7A32-4D06-966C-140CAF6D46EB}.Release|x86.ActiveCfg = Release|Any CPU
 		{73E1E8C1-7A32-4D06-966C-140CAF6D46EB}.Release|x86.Build.0 = Release|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Debug|x64.Build.0 = Debug|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Debug|x86.Build.0 = Debug|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Release|x64.ActiveCfg = Release|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Release|x64.Build.0 = Release|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Release|x86.ActiveCfg = Release|Any CPU
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -217,6 +232,7 @@ Global
 		{A06D47C4-8EB0-4CDE-BDCA-1F76F50BAD84} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
 		{E526939D-89BC-45D9-81F9-D79057ACEDE5} = {A0F8C8C9-7DB8-449E-B0A7-C2C026D693D1}
 		{73E1E8C1-7A32-4D06-966C-140CAF6D46EB} = {037A2B91-FAAE-4EFF-9E11-B86722AEB03B}
+		{504A9893-11CC-45C6-9D86-2EE14BD70EFE} = {8786006C-0227-4A70-AA0D-9872EA8D62F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D4C454C-A5EF-40DC-8E49-9141F411BC91}
