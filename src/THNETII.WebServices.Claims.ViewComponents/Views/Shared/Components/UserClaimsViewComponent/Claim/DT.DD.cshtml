@@ -1,0 +1,40 @@
+@using System.Security.Claims
+@model Claim
+
+@if (Model is Claim claim)
+{
+    <dt>@nameof(claim.Type)</dt>
+    <dd>@claim.Type</dd>
+    <dt>@nameof(claim.Value)</dt>
+    <dd>@claim.Value</dd>
+    <dt title="@nameof(claim.ValueType)">Value Type</dt>
+    <dd>@claim.ValueType</dd>
+    <dt>@nameof(claim.Issuer)</dt>
+    <dd>@claim.Issuer</dd>
+    <dt title="@nameof(claim.OriginalIssuer)">Original Issuer</dt>
+    <dd>@claim.OriginalIssuer</dd>
+    <dt>@nameof(claim.Subject)</dt>
+    <dd>
+        @switch (claim.Subject)
+        {
+            case ClaimsIdentity subject:
+                break;
+            case null:
+                break;
+        }
+    </dd>
+    @if (claim.Properties is IDictionary<string, string> properties && properties.Count > 0)
+    {
+        <dt>@nameof(claim.Properties)</dt>
+        <dd>
+            <dl>
+                @foreach (var prop in properties)
+                {
+                    <dt>@prop.Key</dt>
+                    <dd>@prop.Value</dd>
+                }
+            </dl>
+        </dd>
+    }
+}
+

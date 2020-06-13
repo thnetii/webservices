@@ -1,0 +1,29 @@
+@using System.Security.Claims
+@using System.Security.Principal
+@model IPrincipal
+
+@{
+    var root = new Uri("razor://root");
+    var fileUri = new Uri(root, this.ViewContext.ExecutingFilePath);
+
+    string viewname = null;
+
+    switch (Model)
+    {
+        case WindowsPrincipal _:
+            viewname = new Uri(fileUri, nameof(WindowsPrincipal)).LocalPath;
+            break;
+        case ClaimsPrincipal _:
+            viewname = new Uri(fileUri, nameof(ClaimsPrincipal)).LocalPath;
+            break;
+        case IPrincipal _:
+            viewname = new Uri(fileUri, nameof(IPrincipal)).LocalPath;
+            break;
+    }
+
+}
+
+@if (!string.IsNullOrEmpty(viewname))
+{
+    <partial name="@viewname" model="@Model" />
+}
