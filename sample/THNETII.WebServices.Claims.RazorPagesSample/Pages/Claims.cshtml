@@ -1,0 +1,8 @@
+@page
+@{
+    ViewData["Title"] = "Claims";
+}
+
+<h1>Claims</h1>
+
+@await (Component.InvokeAsync<PrincipalViewComponent>(User))

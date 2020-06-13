@@ -1,0 +1,18 @@
+@using System.Security.Claims
+@using System.Security.Principal
+@model IPrincipal
+
+@Model.ToString();
+@switch (Model)
+{
+    case null:
+        break;
+    case WindowsPrincipal windows:
+        <partial name="@nameof(WindowsPrincipal)" model="windows" />
+        break;
+    case ClaimsPrincipal claims:
+        <partial name="@nameof(ClaimsPrincipal)" model="claims" />
+        break;
+    default:
+        break;
+}

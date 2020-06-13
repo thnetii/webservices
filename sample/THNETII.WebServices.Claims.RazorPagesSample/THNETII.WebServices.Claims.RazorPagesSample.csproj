@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-THNETII.WebServices.Claims.RazorPagesSample-8AC45FF2-FD47-428F-80CC-9F8EB31FCFFD</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.4" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20253.1" />
+    <PackageReference Include="System.CommandLine.Hosting" Version="0.3.0-alpha.20253.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.447" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.76" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\THNETII.CdnJs.Bootstrap\THNETII.CdnJs.Bootstrap.csproj" />
+    <ProjectReference Include="..\..\src\THNETII.CdnJs.JQueryValidate\THNETII.CdnJs.JQueryValidate.csproj" />
+    <ProjectReference Include="..\..\src\THNETII.CdnJs.JQueryValidationUnobtrusive\THNETII.CdnJs.JQueryValidationUnobtrusive.csproj" />
+    <ProjectReference Include="..\..\src\THNETII.WebServices.AspNetCore.TagHelpers\THNETII.WebServices.AspNetCore.TagHelpers.csproj" />
+    <ProjectReference Include="..\..\src\THNETII.WebServices.Claims.ViewComponents\THNETII.WebServices.Claims.ViewComponents.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="libman.json" />
+    <None Include="libman.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+    <None Include="bundleconfig.json" />
+  </ItemGroup>
+
+</Project>

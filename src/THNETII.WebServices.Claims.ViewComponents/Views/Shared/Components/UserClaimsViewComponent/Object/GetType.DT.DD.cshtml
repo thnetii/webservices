@@ -1,0 +1,11 @@
+@model object
+
+@if (Model?.GetType() is Type type)
+{
+    <dt>.@(nameof(Model.GetType))()</dt>
+    <dd>
+        @type.FullName
+        <br/>
+        @type.AssemblyQualifiedName
+    </dd>
+}
