@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "wwwroot/css/app.min.css",
+    "inputFiles": [
+      "wwwroot/css/app.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/app.min.js",
+    "inputFiles": [
+      "wwwroot/js/app.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/service-worker.published.min.js",
+    "inputFiles": [
+      "wwwroot/service-worker.published.js"
+    ]
+  }
+]
