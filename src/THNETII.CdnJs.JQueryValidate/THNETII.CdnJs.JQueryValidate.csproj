@@ -35,8 +35,4 @@
     <ProjectReference Include="..\THNETII.CdnJs.JQuery\THNETII.CdnJs.JQuery.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\jquery-validate\" />
-  </ItemGroup>
-
 </Project>

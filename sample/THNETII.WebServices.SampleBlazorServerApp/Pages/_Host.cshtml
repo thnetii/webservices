@@ -1,0 +1,58 @@
+@page "/"
+@using THNETII.CdnJs
+@namespace THNETII.WebServices.SampleBlazorServerApp.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Startup AppInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@AppInfo.AssemblyName.Name</title>
+    <base href="~/" />
+    @await Html.BootstrapCss()
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/open-iconic/font/css/open-iconic-bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+              asp-fallback-href="~/lib/open-iconic/font/css/open-iconic-bootstrap.min.css"
+              asp-fallback-test-class="oi"
+              asp-fallback-test-property="font-family"
+              asp-fallback-test-value="Icons"
+              integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
+    </environment>
+    <environment include="Development">
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/css/site.min.css" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <app>
+        <component type="typeof(App)" render-mode="ServerPrerendered" />
+    </app>
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    @await Html.BootstrapJs(includeDependencies: true)
+    @await Html.JQueryValidateScripts()
+    @await Html.JQueryValidationUnobtrusiveScripts()
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>
