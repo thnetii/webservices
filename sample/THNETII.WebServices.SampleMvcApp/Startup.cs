@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 
 using THNETII.CdnJs;
 
-namespace THNETII.WebServices.SampleRazorPagesApp
+namespace THNETII.WebServices.SampleMvcApp
 {
     public class Startup
     {
@@ -24,7 +24,7 @@ namespace THNETII.WebServices.SampleRazorPagesApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages()
+            services.AddControllersWithViews()
                 .AddBootstrapApplicationPart()
                 .AddJQueryValidateApplicationPart()
                 .AddJQueryValidationUnobtrusiveApplicationPart()
@@ -42,11 +42,10 @@ namespace THNETII.WebServices.SampleRazorPagesApp
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -56,7 +55,7 @@ namespace THNETII.WebServices.SampleRazorPagesApp
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
