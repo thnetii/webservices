@@ -9,9 +9,20 @@ namespace THNETII.CdnJs
 {
     public static class BootstrapMvcExtensions
     {
-        public static IMvcBuilder AddBootstrapApplicationPart(this IMvcBuilder mvc)
-            => (mvc ?? throw new ArgumentNullException(nameof(mvc)))
-                .AddApplicationPart(typeof(BootstrapMvcExtensions).Assembly);
+        public static IMvcBuilder AddBootstrapApplicationPart(
+            this IMvcBuilder mvc, bool excludeDependencies = false)
+        {
+            _ = mvc ?? throw new ArgumentNullException(nameof(mvc));
+            if (!excludeDependencies)
+            {
+                mvc.AddJQueryApplicationPart();
+                mvc.AddPopperJSApplicationPart();
+            }
+
+            mvc.AddApplicationPart(typeof(BootstrapMvcExtensions).Assembly);
+
+            return mvc;
+        }
 
         public static async Task<IHtmlContent> BootstrapJs(
             this IHtmlHelper html, bool includeDependencies = false)

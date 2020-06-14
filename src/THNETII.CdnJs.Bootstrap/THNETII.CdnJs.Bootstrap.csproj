@@ -35,8 +35,4 @@
     <ProjectReference Include="..\THNETII.CdnJs.PopperJS\THNETII.CdnJs.PopperJS.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\twitter-bootstrap\" />
-  </ItemGroup>
-
 </Project>
