@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.76" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.113" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
